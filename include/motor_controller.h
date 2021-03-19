@@ -3,6 +3,7 @@
 #include <pigpiod_if2.h>
 #include <thread>
 #include <chrono>
+#include "motor.h"
 
 class MotorController
 {
