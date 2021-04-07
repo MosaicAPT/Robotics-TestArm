@@ -1,0 +1,20 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+// Motor clk pins
+#define BASE_MOTOR_CLK_PIN 2
+#define SHOULDER_MOTOR_1_CLK_PIN 3
+#define SHOULDER_MOTOR_2_CLK_PIN 4
+#define ELBOW_MOTOR_CLK_PIN 5
+#define WRIST_MOTOR_1_CLK_PIN 6
+#define WRIST_MOTOR_2_CLK_PIN 7
+
+// Motor cw pins
+#define BASE_MOTOR_CW_PIN 8
+#define SHOULDER_MOTOR_1_CW_PIN 9
+#define SHOULDER_MOTOR_2_CW_PIN 10
+#define ELBOW_MOTOR_CW_PIN 11
+#define WRIST_MOTOR_1_CW_PIN 12
+#define WRIST_MOTOR_2_CW_PIN 13
+
+#endif
