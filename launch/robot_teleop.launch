@@ -7,7 +7,9 @@
     </node>
 
 <!-- telelop twist node-->
-    <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+    <!-- <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+    </node> -->
+    <node pkg="robot_joy" name="teleop" type="robot_joy">
     </node>
 
 <!-- serial python node-->
