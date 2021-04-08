@@ -94,6 +94,7 @@ ros::Subscriber <geometry_msgs::Twist> sub("/cmd_vel", motorCallBack);
 
 void setup()
 {
+  Serial.begin(115200);
   nh.initNode();
   nh.subscribe(sub);
 }

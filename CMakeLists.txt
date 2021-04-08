@@ -1,4 +1,4 @@
- project(DumE)
+ project(Robotics_Testarm)
  cmake_minimum_required(VERSION 3.0.2)
  
  # Get the information about this package's buildtime dependencies
