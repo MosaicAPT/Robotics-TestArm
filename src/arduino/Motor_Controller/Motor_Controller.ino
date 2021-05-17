@@ -91,6 +91,7 @@ void motorCallBack(const geometry_msgs::Twist& cmd_vel)
 }
 
 ros::Subscriber <geometry_msgs::Twist> sub("/cmd_vel", motorCallBack);
+ros::Subscriber <moveo_moveit::ArmJointState> arm_sub("joint_steps", arm_cb);
 
 void setup()
 {
