@@ -1,5 +1,4 @@
 #include "Motor_Controller.h"
-#include <Robotics_TestArm/ArmJointState.h>
 #include <Servo.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/String.h>
@@ -10,6 +9,7 @@
 #include <std_msgs/UInt16.h>
 #include <AccelStepper.h>
 #include <MultiStepper.h>
+#include "Robotics_TestArm/ArmJointState.h"
 
 int count = 0;
 
@@ -29,7 +29,7 @@ ros::NodeHandle nh;
 std_msgs::UInt16 msg;
 
 // ArmJointState Callback function
-void arm_cb(const Robotics_TestArm::ArmJointState& arm_steps) {
+void arm_cb(const Robotics_TestArm::ArmJointState arm_steps) {
   joint_status = 1;
   joint_step[0] = arm_steps.position1;
   joint_step[1] = arm_steps.position2;
@@ -65,7 +65,7 @@ void setup() {
   steppers.addStepper(wrist2);
 
   // Configure gripper servo
-  gripper.attach(9);
+//  gripper.attach(9);
 
   digitalWrite(13, 1); //toggle led
 }

@@ -9,7 +9,8 @@ find_package(catkin REQUIRED
     sensor_msgs 
     moveit_core
     moveit_ros_planning
-    moveit_ros_planning_interface)
+    moveit_ros_planning_interface
+    message_generation)
 
 include_directories(${catkin_INCLUDE_DIRS})
 
@@ -34,6 +35,7 @@ catkin_package(
     sensor_msgs 
     moveit_core
     moveit_ros_planning_interface
+    message_runtime
 )
 
 # define executable using MyMessage1 etc.

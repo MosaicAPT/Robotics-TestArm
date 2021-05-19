@@ -59,6 +59,7 @@
   <build_export_depend>joy</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
 
+  <exec_depend>message_runtime</exec_depend>
   <exec_depend>moveit_core</exec_depend>
   <exec_depend>moveit_fake_controller_manager</exec_depend>
   <exec_depend>moveit_ros_planning_interface</exec_depend>
