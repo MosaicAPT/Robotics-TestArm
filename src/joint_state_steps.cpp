@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
-#include "Robotic_TestArm/ArmJointState.h"
+#include "Robotics_TestArm/ArmJointState.h"
 #include "math.h"
 
 // Init variables
@@ -8,13 +8,13 @@ Robotics_TestArm::ArmJointState arm_steps;
 Robotics_TestArm::ArmJointState total;
 
 // We are 16th's microstepping the motors
-int stepsPerRevolution[7] = {160, 6400, 6400, 6400, 6400, 6400, 6400}; 
+int stepsPerRevolution[6] = {160, 6400, 6400, 6400, 6400, 6400}; 
 int joint_status = 0;
-double cur_angle[7];
-int joint_step[7];
-double prev_angle[7] = {0,0,0,0,0,0,0}; 
-double init_angle[7] = {0,0,0,0,0,0,0};
-double total_steps[7] = {0,0,0,0,0,0,0};
+double cur_angle[6];
+int joint_step[6];
+double prev_angle[6] = {0,0,0,0,0,0}; 
+double init_angle[6] = {0,0,0,0,0,0};
+double total_steps[6] = {0,0,0,0,0,0};
 int count = 0;
 int momo = 0;
 
@@ -27,7 +27,6 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
     prev_angle[3] = cmd_arm.position[3];
     prev_angle[4] = cmd_arm.position[4];
     prev_angle[5] = cmd_arm.position[5];
-    prev_angle[6] = cmd_arm.position[6];
 
 
     init_angle[0] = cmd_arm.position[0];
@@ -36,7 +35,6 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
     init_angle[3] = cmd_arm.position[3];
     init_angle[4] = cmd_arm.position[4];
     init_angle[5] = cmd_arm.position[5];
-    init_angle[6] = cmd_arm.position[6];
 
   }
 
@@ -50,7 +48,6 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
     arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3] + 0)*stepsPerRevolution[3]*(5.18*4)/(2*M_PI));
     arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]*(5.18*2)/(2*M_PI));
     arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]*(5.18*2)/(2*M_PI));
-    arm_steps.position7 = (int)((cmd_arm.position[6]-init_angle[6])*stepsPerRevolution[6]*(5.18*2)/(2*M_PI));
 
     momo = 1;
   }
@@ -61,7 +58,6 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
     prev_angle[3] = cmd_arm.position[3];
     prev_angle[4] = cmd_arm.position[4];
     prev_angle[5] = cmd_arm.position[5];
-    prev_angle[6] = cmd_arm.position[6];
 
   }
 

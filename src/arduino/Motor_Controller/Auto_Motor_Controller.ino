@@ -37,7 +37,6 @@ void arm_cb(const Robotics_TestArm::ArmJointState& arm_steps) {
   joint_step[3] = arm_steps.position4;
   joint_step[4] = arm_steps.position5;
   joint_step[5] = arm_steps.position6;
-  
 }
 
 ros::Subscriber<Robotics_TestArm::ArmJointState> arm_sub("joint_steps", arm_cb);
@@ -77,10 +76,10 @@ void loop() {
     long positions[6];  // Array of desired stepper positions must be long
     positions[0] = joint_step[0]; // negated since the real robot rotates in the opposite direction as ROS
     positions[1] = -joint_step[1];
-    positions[2] = joint_step[2];
-    positions[3] = joint_step[3];
-    positions[4] = -joint_step[4];
-    positions[5] = joint_step[5];
+    positions[2] = joint_step[1];
+    positions[3] = joint_step[2];
+    positions[4] = -joint_step[3];
+    positions[5] = joint_step[4];
 
     steppers.moveTo(positions);
     //nh.spinOnce();
