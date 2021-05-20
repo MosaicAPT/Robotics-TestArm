@@ -29,7 +29,7 @@ ros::NodeHandle nh;
 std_msgs::UInt16 msg;
 
 // ArmJointState Callback function
-void arm_cb(const Robotics_TestArm::ArmJointState arm_steps) {
+void arm_cb(const Robotics_TestArm::ArmJointState& arm_steps) {
   joint_status = 1;
   joint_step[0] = arm_steps.position1;
   joint_step[1] = arm_steps.position2;
@@ -39,7 +39,7 @@ void arm_cb(const Robotics_TestArm::ArmJointState arm_steps) {
   joint_step[5] = arm_steps.position6;
 }
 
-ros::Subscriber<Robotics_TestArm::ArmJointState> arm_sub("joint_steps", arm_cb);
+ros::Subscriber<Robotics_TestArm::ArmJointState> arm_sub("/joint_steps", arm_cb);
 
 void setup() {
   //put your setup code here, to run once:

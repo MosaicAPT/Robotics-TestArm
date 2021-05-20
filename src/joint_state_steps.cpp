@@ -38,9 +38,9 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
 
   }
 
-  ROS_INFO_STREAM("Received /move_group/fake_controller_joint_states");
+ // ROS_INFO_STREAM("Received /move_group/fake_controller_joint_states");
 
-  if (prev_angle[0,1,2,3,4,5,6] == cmd_arm.position[0,1,2,3,4,5,6]){
+  if (prev_angle[0,1,2,3,4,5] == cmd_arm.position[0,1,2,3,4,5]){
 
     arm_steps.position1 = (int)((cmd_arm.position[0]-init_angle[0])*stepsPerRevolution[0]*(4.25)*1000);     //max rail distance=0.791367 m   ,   max steps for this value is = 17833
     arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]*(4.25*2)/(2*M_PI));
@@ -64,7 +64,7 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
   ROS_INFO_NAMED("test", "cmd_arm.position[0] %f", cmd_arm.position[0]);
   ROS_INFO_NAMED("test", "init_angle[0] %f", init_angle[0]);
 
-  ROS_INFO_STREAM("Done conversion to /joint_steps");
+  //ROS_INFO_STREAM("Done conversion to /joint_steps");
   joint_status = 1;
   count=1;
 }
@@ -87,6 +87,7 @@ int main(int argc, char **argv)
       pub.publish(arm_steps);
       ROS_INFO_STREAM("Published to /joint_steps");
     }
+    //ROS_INFO_STREAM()
     ros::spinOnce();
   }
   ros::spin();

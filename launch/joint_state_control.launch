@@ -1,8 +1,8 @@
 <launch>
 
 <!-- Joint State Converter -->
-    <node pkg="Robotics_TestArm" type="step_converter" name="Step_Converter">
-    </node>
+    <!--node pkg="Robotics_TestArm" type="step_converter" name="Step_Converter">
+    </node-->
 
 <!-- launch file for rviz -->
     <include file="$(find moveo_moveit_config)/launch/demo.launch" />
