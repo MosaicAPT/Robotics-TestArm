@@ -8,7 +8,7 @@ Robotics_TestArm::ArmJointState arm_steps;
 Robotics_TestArm::ArmJointState total;
 
 // We are 16th's microstepping the motors
-int stepsPerRevolution[6] = {160, 6400, 6400, 6400, 6400, 6400}; 
+int stepsPerRevolution[6] = {3200, 3200, 3200, 800, 3200, 3200}; 
 int joint_status = 0;
 double cur_angle[6];
 int joint_step[6];
@@ -42,13 +42,21 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
 
   if (prev_angle[0,1,2,3,4,5] == cmd_arm.position[0,1,2,3,4,5]){
 
-    arm_steps.position1 = (int)((cmd_arm.position[0]-init_angle[0])*stepsPerRevolution[0]*(4.25)*1000);     //max rail distance=0.791367 m   ,   max steps for this value is = 17833
-    arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]*(4.25*2)/(2*M_PI));
-    arm_steps.position3 = (int)((cmd_arm.position[2]-init_angle[2])*stepsPerRevolution[2]*(15.3*4)/(2*M_PI));
-    arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3] + 0)*stepsPerRevolution[3]*(5.18*4)/(2*M_PI));
-    arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]*(5.18*2)/(2*M_PI));
-    arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]*(5.18*2)/(2*M_PI));
+    // arm_steps.position1 = (int)((cmd_arm.position[0]-init_angle[0])*stepsPerRevolution[0]*(4.25));     //max rail distance=0.791367 m   ,   max steps for this value is = 17833
+    // arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]*(4.25*2)/(2*M_PI));
+    // arm_steps.position3 = (int)((cmd_arm.position[2]-init_angle[2])*stepsPerRevolution[2]*(15.3*4)/(2*M_PI));
+    // arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3] + 0)*stepsPerRevolution[3]*(5.18*4)/(2*M_PI));
+    // arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]*(5.18*2)/(2*M_PI));
+    // arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]*(5.18*2)/(2*M_PI));
 
+    arm_steps.position1 = (int)((cmd_arm.position[0]-init_angle[0])*stepsPerRevolution[0]);     //max rail distance=0.791367 m   ,   max steps for this value is = 17833
+    arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]/M_PI);
+    arm_steps.position3 = (int)((cmd_arm.position[2]-init_angle[2])*stepsPerRevolution[2]);
+    arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3])*stepsPerRevolution[3]);
+    arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]/M_PI);
+    arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]/M_PI);
+
+    
     momo = 1;
   }
  if (count!=0){
