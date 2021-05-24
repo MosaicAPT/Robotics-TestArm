@@ -18,6 +18,13 @@ double total_steps[6] = {0,0,0,0,0,0};
 int count = 0;
 int momo = 0;
 
+// Sprocket Ratios
+float r1 = (10/100);
+float r2 = (14/77);
+float r3 = (14/61);
+float r4 = (1);
+float r5 = (10/45);
+
 void cmd_cb(const sensor_msgs::JointState& cmd_arm)
 {
   if (count==0){
@@ -50,11 +57,11 @@ void cmd_cb(const sensor_msgs::JointState& cmd_arm)
     // arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]*(5.18*2)/(2*M_PI));
 
     arm_steps.position1 = (int)((cmd_arm.position[0]-init_angle[0])*stepsPerRevolution[0]);     //max rail distance=0.791367 m   ,   max steps for this value is = 17833
-    arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]/M_PI);
-    arm_steps.position3 = (int)((cmd_arm.position[2]-init_angle[2])*stepsPerRevolution[2]);
-    arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3])*stepsPerRevolution[3]);
-    arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]/M_PI);
-    arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]/M_PI);
+    arm_steps.position2 = (int)((cmd_arm.position[1]-init_angle[1])*stepsPerRevolution[1]);
+    arm_steps.position3 = (int)((cmd_arm.position[2]-init_angle[2])*stepsPerRevolution[2]*4);
+    arm_steps.position4 = (int)((cmd_arm.position[3]-init_angle[3])*stepsPerRevolution[3]/2);
+    arm_steps.position5 = (int)((cmd_arm.position[4]-init_angle[4])*stepsPerRevolution[4]);
+    arm_steps.position6 = (int)((cmd_arm.position[5]-init_angle[5])*stepsPerRevolution[5]);
 
     
     momo = 1;
