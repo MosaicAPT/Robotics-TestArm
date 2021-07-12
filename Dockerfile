@@ -18,6 +18,16 @@ RUN /bin/bash -c "source ~/.bashrc"
 RUN sudo apt install python-rosdep python-rosinstall \
     python-rosinstall-generator python-wstool build-essential -y
 
+RUN sudo apt intall python3-pip -y
+RUN pip3 install bosdyn-client bosdyn-mission bosdyn-api bosdyn-core cython empy
+# mkdir catkin_ws/src
+# git clone https://github.com/clearpathrobotics/spot_ros.git
+# git clone https://github.com/ros/geometry2 --branch 0.6.5
+# cd catkin_ws
+# rosdep install --from-paths src --ignore-src -y
+# catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so
+
+
 # ROS dep
 RUN sudo apt install python-rosdep -y
 RUN sudo rosdep init
